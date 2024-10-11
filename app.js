@@ -9,6 +9,7 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
 const dotenv = require("dotenv");
+const menuRouter = require("./src/routers/MenuRouter");
 
 dotenv.config();
 
@@ -35,6 +36,8 @@ app.use(limiter);
 app.get("/", (req, res) => {
   res.send("Welcome to Bistro Boss API");
 });
+
+app.use("/api/v1", menuRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

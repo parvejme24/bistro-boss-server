@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const itemSchema = new mongoose.Schema(
+const menuSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -55,11 +55,11 @@ const itemSchema = new mongoose.Schema(
   }
 );
 
-itemSchema.pre("save", function (next) {
+menuSchema.pre("save", function (next) {
   this.updatedAt = Date.now();
   next();
 });
 
-const Item = mongoose.model("Item", itemSchema);
+const Menu = mongoose.model("Menu", menuSchema);
 
-module.exports = Item;
+module.exports = Menu;
