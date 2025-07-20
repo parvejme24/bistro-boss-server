@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    displayname: {
       type: String,
       required: true,
       trim: true,
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
-    photo: {
+    photoUrl: {
       type: String,
       default: "",
     },

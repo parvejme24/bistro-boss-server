@@ -10,6 +10,7 @@ const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
 const dotenv = require("dotenv");
 const menuRouter = require("./src/routers/MenuRouter");
+const authRouter = require("./src/routers/AuthRouter");
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1", menuRouter);
+app.use("/api/v1", authRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
