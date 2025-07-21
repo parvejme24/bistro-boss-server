@@ -39,9 +39,9 @@ app.get("/", (req, res) => {
   res.send("Welcome to Bistro Boss API");
 });
 
-app.use("/api/v1", menuRouter);
 app.use("/api/v1", authRouter);
 app.use("/api/v1", userRouter);
+app.use("/api/v1", menuRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

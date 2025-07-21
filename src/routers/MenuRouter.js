@@ -1,24 +1,13 @@
-const express = require("express");
-const {
-  getMenuItems,
-  getMenuItemById,
-  createMenuItem,
-  updateMenuItem,
-  deleteMenuItem,
-  deleteMultipleMenuItems,
-  getMenuItemsByCategory,
-  searchMenuItems,
-} = require("../controllers/MenuController");
-
+const express = require('express');
+const MenuController = require('../controllers/MenuController');
+const { authenticate, authorizeRoles } = require('../middleware/auth');
 const menuRouter = express.Router();
 
-menuRouter.post("/menu", createMenuItem);
-menuRouter.get("/menu", getMenuItems);
-menuRouter.get("/menu/:id", getMenuItemById);
-menuRouter.get("/menu/category/:category", getMenuItemsByCategory);
-menuRouter.get("/menu/search", searchMenuItems);
-menuRouter.put("/menu/:id", updateMenuItem);
-menuRouter.delete("/menu/:id", deleteMenuItem);
-menuRouter.delete("/menu", deleteMultipleMenuItems);
+
+menuRouter.get('/menu', MenuController.getAllMenus);
+menuRouter.get('/menu/:id', MenuController.getMenuById);
+menuRouter.post('/menu', authenticate, authorizeRoles('ADMIN', 'MODERATOR'), MenuController.createMenu);
+menuRouter.put('/menu/:id', authenticate, authorizeRoles('ADMIN', 'MODERATOR'), MenuController.updateMenu);
+menuRouter.delete('/menu/:id', authenticate, authorizeRoles('ADMIN', 'MODERATOR'), MenuController.deleteMenu);
 
 module.exports = menuRouter;
