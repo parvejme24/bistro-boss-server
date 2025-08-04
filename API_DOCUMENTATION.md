@@ -424,4 +424,335 @@ Common HTTP status codes:
   {
     "message": "Category deleted"
   }
-  ``` 
+  ```
+
+---
+
+## 🍔 Menu Management APIs
+
+### Get All Menu Items
+- **GET** `/api/v1/menus`
+- **Description**: Get all menu items
+- **Response**:
+  ```json
+  {
+    "message": "Menus retrieved",
+    "menus": [
+      {
+        "_id": "menu_id",
+        "name": "Grilled Chicken",
+        "image": "chicken_image_url",
+        "price": 25.99,
+        "discount": 5,
+        "shortDescription": "Delicious grilled chicken",
+        "description": "Fresh grilled chicken with herbs and spices",
+        "ingredients": ["chicken", "herbs", "spices"],
+        "category": {
+          "_id": "category_id",
+          "name": "Main Course"
+        },
+        "createdBy": {
+          "_id": "user_id",
+          "name": "Chef John"
+        },
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+      }
+    ],
+    "count": 1
+  }
+  ```
+
+### Get Menu by ID
+- **GET** `/api/v1/menus/:id`
+- **Description**: Get single menu by ID
+- **Response**:
+  ```json
+  {
+    "message": "Menu retrieved",
+    "menu": {
+      "_id": "menu_id",
+      "name": "Grilled Chicken",
+      "image": "chicken_image_url",
+      "price": 25.99,
+      "discount": 5,
+      "shortDescription": "Delicious grilled chicken",
+      "description": "Fresh grilled chicken with herbs and spices",
+      "ingredients": ["chicken", "herbs", "spices"],
+      "category": {
+        "_id": "category_id",
+        "name": "Main Course"
+      },
+      "createdBy": {
+        "_id": "user_id",
+        "name": "Chef John"
+      },
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Create Menu (Chef/Admin Only)
+- **POST** `/api/v1/menus`
+- **Description**: Create a new menu item
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Body**:
+  ```json
+  {
+    "name": "Grilled Salmon",
+    "image": "salmon_image_url",
+    "price": 32.99,
+    "discount": 0,
+    "shortDescription": "Fresh grilled salmon",
+    "description": "Fresh Atlantic salmon grilled to perfection",
+    "ingredients": ["salmon", "lemon", "herbs", "olive oil"],
+    "category": "category_id"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "message": "Menu created",
+    "menu": {
+      "_id": "menu_id",
+      "name": "Grilled Salmon",
+      "image": "salmon_image_url",
+      "price": 32.99,
+      "discount": 0,
+      "shortDescription": "Fresh grilled salmon",
+      "description": "Fresh Atlantic salmon grilled to perfection",
+      "ingredients": ["salmon", "lemon", "herbs", "olive oil"],
+      "category": {
+        "_id": "category_id",
+        "name": "Main Course"
+      },
+      "createdBy": {
+        "_id": "user_id",
+        "name": "Chef John"
+      },
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Update Menu (Chef/Admin Only)
+- **PATCH** `/api/v1/menus/:id`
+- **Description**: Update menu item
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Body**:
+  ```json
+  {
+    "price": 29.99,
+    "discount": 10,
+    "description": "Updated description for grilled salmon"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "message": "Menu updated",
+    "menu": {
+      "_id": "menu_id",
+      "name": "Grilled Salmon",
+      "image": "salmon_image_url",
+      "price": 29.99,
+      "discount": 10,
+      "shortDescription": "Fresh grilled salmon",
+      "description": "Updated description for grilled salmon",
+      "ingredients": ["salmon", "lemon", "herbs", "olive oil"],
+      "category": {
+        "_id": "category_id",
+        "name": "Main Course"
+      },
+      "createdBy": {
+        "_id": "user_id",
+        "name": "Chef John"
+      },
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Delete Menu (Chef/Admin Only)
+- **DELETE** `/api/v1/menus/:id`
+- **Description**: Delete menu item
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Response**:
+  ```json
+  {
+    "message": "Menu deleted"
+  }
+  ```
+
+### Get Best-Selling Menu Items
+- **GET** `/api/v1/menus/best-selling`
+- **Description**: Get best-selling menu items based on ratings
+- **Response**:
+  ```json
+  {
+    "message": "Best-selling menus retrieved",
+    "menus": [
+      {
+        "_id": "menu_id",
+        "name": "Grilled Chicken",
+        "image": "chicken_image_url",
+        "price": 25.99,
+        "discount": 5,
+        "shortDescription": "Delicious grilled chicken",
+        "description": "Fresh grilled chicken with herbs and spices",
+        "ingredients": ["chicken", "herbs", "spices"],
+        "category": {
+          "_id": "category_id",
+          "name": "Main Course"
+        },
+        "createdBy": {
+          "_id": "user_id",
+          "name": "Chef John"
+        },
+        "avgRating": 4.5,
+        "reviewCount": 12,
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+      }
+    ]
+  }
+  ```
+
+### Get Menu Items by Category
+- **GET** `/api/v1/menus/category/:categoryId`
+- **Description**: Get menu items by category
+- **Response**:
+  ```json
+  {
+    "message": "Menus by category retrieved",
+    "menus": [
+      {
+        "_id": "menu_id",
+        "name": "Grilled Chicken",
+        "image": "chicken_image_url",
+        "price": 25.99,
+        "discount": 5,
+        "shortDescription": "Delicious grilled chicken",
+        "description": "Fresh grilled chicken with herbs and spices",
+        "ingredients": ["chicken", "herbs", "spices"],
+        "category": {
+          "_id": "category_id",
+          "name": "Main Course"
+        },
+        "createdBy": {
+          "_id": "user_id",
+          "name": "Chef John"
+        },
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+      }
+    ],
+    "count": 1
+  }
+  ```
+
+---
+
+## ⭐ Menu Review APIs
+
+### Get All Reviews for a Menu
+- **GET** `/api/v1/reviews/menu/:menuId`
+- **Description**: Get all reviews for a specific menu
+- **Response**:
+  ```json
+  {
+    "message": "Reviews retrieved",
+    "reviews": [
+      {
+        "_id": "review_id",
+        "user": {
+          "_id": "user_id",
+          "name": "John Doe",
+          "image": "user_image_url"
+        },
+        "menu": "menu_id",
+        "rating": 5,
+        "comment": "Excellent dish! Highly recommended.",
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+      }
+    ],
+    "count": 1
+  }
+  ```
+
+### Add Review for a Menu (Authenticated User)
+- **POST** `/api/v1/reviews/menu/:menuId`
+- **Description**: Add a review for a menu item
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Body**:
+  ```json
+  {
+    "rating": 5,
+    "comment": "Amazing taste and presentation!"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "message": "Review added",
+    "review": {
+      "_id": "review_id",
+      "user": {
+        "_id": "user_id",
+        "name": "John Doe",
+        "image": "user_image_url"
+      },
+      "menu": "menu_id",
+      "rating": 5,
+      "comment": "Amazing taste and presentation!",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Update Review (Review Owner Only)
+- **PATCH** `/api/v1/reviews/:reviewId`
+- **Description**: Update user's own review
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Body**:
+  ```json
+  {
+    "rating": 4,
+    "comment": "Updated comment - still very good!"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "message": "Review updated",
+    "review": {
+      "_id": "review_id",
+      "user": {
+        "_id": "user_id",
+        "name": "John Doe",
+        "image": "user_image_url"
+      },
+      "menu": "menu_id",
+      "rating": 4,
+      "comment": "Updated comment - still very good!",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Delete Review (Review Owner Only)
+- **DELETE** `/api/v1/reviews/:reviewId`
+- **Description**: Delete user's own review
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Response**:
+  ```json
+  {
+    "message": "Review deleted"
+  }
+  ```
