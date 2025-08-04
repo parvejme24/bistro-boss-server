@@ -23,11 +23,16 @@ exports.getMenuById = async (req, res) => {
   }
 };
 
-// Create Menu (Chef/Admin Only)
+// Create Menu (Chef Only - Can only create their own menu)
 exports.createMenu = async (req, res) => {
   try {
     const { name, image, price, discount, shortDescription, description, ingredients, category } = req.body;
     const createdBy = req.user.id;
+
+    // Ensure only chefs can create menus
+    if (req.user.role !== "chef") {
+      return res.status(403).json({ message: "Only chefs can create menus" });
+    }
 
     const menu = await Menu.create({
       name,
@@ -48,7 +53,7 @@ exports.createMenu = async (req, res) => {
   }
 };
 
-// Update Menu (Chef/Admin Only)
+// Update Menu (Chef Only - Can only update their own menu)
 exports.updateMenu = async (req, res) => {
   try {
     const { id } = req.params;
@@ -56,6 +61,11 @@ exports.updateMenu = async (req, res) => {
 
     const menu = await Menu.findById(id);
     if (!menu) return res.status(404).json({ message: "Menu not found" });
+
+    // Ensure only the chef who created the menu can update it
+    if (req.user.role !== "chef" || menu.createdBy.toString() !== req.user.id) {
+      return res.status(403).json({ message: "You can only update your own menus" });
+    }
 
     const updatedMenu = await Menu.findByIdAndUpdate(
       id,
@@ -69,12 +79,20 @@ exports.updateMenu = async (req, res) => {
   }
 };
 
-// Delete Menu (Chef/Admin Only)
+// Delete Menu (Chef Only - Can only delete their own menu)
 exports.deleteMenu = async (req, res) => {
   try {
     const { id } = req.params;
-    const menu = await Menu.findByIdAndDelete(id);
+    
+    const menu = await Menu.findById(id);
     if (!menu) return res.status(404).json({ message: "Menu not found" });
+
+    // Ensure only the chef who created the menu can delete it
+    if (req.user.role !== "chef" || menu.createdBy.toString() !== req.user.id) {
+      return res.status(403).json({ message: "You can only delete your own menus" });
+    }
+
+    await Menu.findByIdAndDelete(id);
     res.status(200).json({ message: "Menu deleted" });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
@@ -132,6 +150,36 @@ exports.getMenusByCategory = async (req, res) => {
       .populate("createdBy", "name");
     
     res.status(200).json({ message: "Menus by category retrieved", menus, count: menus.length });
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
+// Get Chef's Own Menus (Chef Only)
+exports.getChefMenus = async (req, res) => {
+  try {
+    const chefId = req.user.id;
+    
+    // Ensure only chefs can access this endpoint
+    if (req.user.role !== "chef") {
+      return res.status(403).json({ message: "Only chefs can access their menus" });
+    }
+
+    const menus = await Menu.find({ createdBy: chefId })
+      .populate("category", "name")
+      .populate("createdBy", "name")
+      .sort({ createdAt: -1 });
+    
+    res.status(200).json({ 
+      message: "Chef menus retrieved", 
+      menus, 
+      count: menus.length,
+      chef: {
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email
+      }
+    });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
   }

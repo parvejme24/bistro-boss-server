@@ -14,6 +14,11 @@ const userRouter = require("./src/routers/UserRoutes");
 const categoryRouter = require("./src/routers/CategoryRoutes");
 const menuRouter = require("./src/routers/MenuRoutes");
 const reviewRouter = require("./src/routers/ReviewRoutes");
+const cartRouter = require("./src/routers/CartRoutes");
+const blogRouter = require("./src/routers/BlogRoutes");
+const blogReviewRouter = require("./src/routers/BlogReviewRoutes");
+const chefRouter = require("./src/routers/ChefRoutes");
+const adminRouter = require("./src/routers/AdminRoutes");
 
 dotenv.config();
 
@@ -48,6 +53,11 @@ app.use("/api/v1", userRouter);
 app.use("/api/v1", categoryRouter);
 app.use("/api/v1", menuRouter);
 app.use("/api/v1", reviewRouter);
+app.use("/api/v1", cartRouter);
+app.use("/api/v1", blogRouter);
+app.use("/api/v1", blogReviewRouter);
+app.use("/api/v1", chefRouter);
+app.use("/api/v1", adminRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

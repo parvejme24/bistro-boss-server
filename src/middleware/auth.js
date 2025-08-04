@@ -48,6 +48,7 @@ const authorizeRole = (...roles) => {
 // Specific role middlewares
 const requireAdmin = authorizeRole("admin");
 const requireChef = authorizeRole("chef", "admin");
+const requireChefOnly = authorizeRole("chef"); // Only chefs, not admins
 const requireCustomer = authorizeRole("customer", "chef", "admin");
 
 module.exports = {
@@ -55,5 +56,6 @@ module.exports = {
   authorizeRole,
   requireAdmin,
   requireChef,
+  requireChefOnly,
   requireCustomer,
 }; 
