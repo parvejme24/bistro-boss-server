@@ -317,4 +317,111 @@ Common HTTP status codes:
 - `401`: Unauthorized
 - `403`: Forbidden
 - `404`: Not Found
-- `500`: Internal Server Error 
+- `500`: Internal Server Error
+
+---
+
+## 🏷️ Category Management APIs
+
+### Get All Categories
+- **GET** `/api/v1/categories`
+- **Description**: Get all categories
+- **Response**:
+  ```json
+  {
+    "message": "Categories retrieved",
+    "categories": [
+      {
+        "_id": "category_id",
+        "name": "Main Course",
+        "image": "main_course_image_url",
+        "description": "Delicious main course dishes",
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+      }
+    ],
+    "count": 1
+  }
+  ```
+
+### Get Single Category
+- **GET** `/api/v1/categories/:id`
+- **Description**: Get single category by ID
+- **Response**:
+  ```json
+  {
+    "message": "Category retrieved",
+    "category": {
+      "_id": "category_id",
+      "name": "Main Course",
+      "image": "main_course_image_url",
+      "description": "Delicious main course dishes",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Create Category (Admin Only)
+- **POST** `/api/v1/categories`
+- **Description**: Create a new category
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Body**:
+  ```json
+  {
+    "name": "Desserts",
+    "image": "desserts_image_url",
+    "description": "Sweet and delicious desserts"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "message": "Category created",
+    "category": {
+      "_id": "category_id",
+      "name": "Desserts",
+      "image": "desserts_image_url",
+      "description": "Sweet and delicious desserts",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Update Category (Admin Only)
+- **PATCH** `/api/v1/categories/:id`
+- **Description**: Update category
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Body**:
+  ```json
+  {
+    "name": "Sweet Desserts",
+    "description": "Updated description for desserts"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "message": "Category updated",
+    "category": {
+      "_id": "category_id",
+      "name": "Sweet Desserts",
+      "image": "desserts_image_url",
+      "description": "Updated description for desserts",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  }
+  ```
+
+### Delete Category (Admin Only)
+- **DELETE** `/api/v1/categories/:id`
+- **Description**: Delete category
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Response**:
+  ```json
+  {
+    "message": "Category deleted"
+  }
+  ``` 

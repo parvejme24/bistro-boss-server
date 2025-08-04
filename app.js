@@ -11,6 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const dotenv = require("dotenv");
 const authRouter = require("./src/routers/AuthRoutes");
 const userRouter = require("./src/routers/UserRoutes");
+const categoryRouter = require("./src/routers/CategoryRoutes");
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1", authRouter);
 app.use("/api/v1", userRouter);
+app.use("/api/v1", categoryRouter);
 // app.use("/api/v1", menuRouter);
 
 app.use((err, req, res, next) => {
