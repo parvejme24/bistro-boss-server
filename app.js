@@ -9,16 +9,6 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
 const dotenv = require("dotenv");
-const authRouter = require("./src/routers/AuthRoutes");
-const userRouter = require("./src/routers/UserRoutes");
-const categoryRouter = require("./src/routers/CategoryRoutes");
-const menuRouter = require("./src/routers/MenuRoutes");
-const reviewRouter = require("./src/routers/ReviewRoutes");
-const cartRouter = require("./src/routers/CartRoutes");
-const blogRouter = require("./src/routers/BlogRoutes");
-const blogReviewRouter = require("./src/routers/BlogReviewRoutes");
-const chefRouter = require("./src/routers/ChefRoutes");
-const adminRouter = require("./src/routers/AdminRoutes");
 
 dotenv.config();
 
@@ -42,22 +32,17 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+// Import routes
+const userRouter = require("./src/routers/userRouter");
+
+// Routes
+app.use("/api/v1", userRouter);
+
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Welcome to Bistro Boss Server",
   });
 });
-
-app.use("/api/v1", authRouter);
-app.use("/api/v1", userRouter);
-app.use("/api/v1", categoryRouter);
-app.use("/api/v1", menuRouter);
-app.use("/api/v1", reviewRouter);
-app.use("/api/v1", cartRouter);
-app.use("/api/v1", blogRouter);
-app.use("/api/v1", blogReviewRouter);
-app.use("/api/v1", chefRouter);
-app.use("/api/v1", adminRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

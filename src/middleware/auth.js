@@ -1,5 +1,4 @@
-const jwt = require("jsonwebtoken");
-const { jwtSecret } = require("../utils/secret");
+const { verifyAccessToken } = require("../utils/jwtUtils");
 const User = require("../models/UserModel");
 
 // Middleware to verify access token
@@ -12,13 +11,13 @@ const authenticateToken = async (req, res, next) => {
       return res.status(401).json({ message: "Access token required" });
     }
 
-    const decoded = jwt.verify(token, jwtSecret);
+    const decoded = verifyAccessToken(token);
     if (!decoded) {
       return res.status(403).json({ message: "Invalid or expired access token" });
     }
 
     // Get user from database
-    const user = await User.findById(decoded.id).select("-password");
+    const user = await User.findById(decoded.userId).select("-password");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

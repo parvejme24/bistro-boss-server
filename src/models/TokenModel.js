@@ -9,7 +9,9 @@ const tokenSchema = new mongoose.Schema(
     },
     refreshToken: {
       type: String,
-      required: true,
+    },
+    resetToken: {
+      type: String,
     },
     expiresAt: {
       type: Date,

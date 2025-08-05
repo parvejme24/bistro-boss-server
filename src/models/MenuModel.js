@@ -11,7 +11,7 @@ const menuSchema = new mongoose.Schema(
     ingredients: { type: [String], default: [] },
     category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
+      ref: "MenuCategory",
       required: true,
     },
     createdBy: {
