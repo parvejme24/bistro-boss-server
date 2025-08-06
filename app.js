@@ -43,6 +43,7 @@ const menuReviewRouter = require("./src/routers/menuReviewRouter");
 const menuWishlistRouter = require("./src/routers/menuWishlistRouter");
 const cartRouter = require("./src/routers/cartRouter");
 const shippingRouter = require("./src/routers/shippingRouter");
+const orderRouter = require("./src/routers/orderRouter");
 
 // Routes
 app.use("/api/v1", userRouter);
@@ -55,6 +56,7 @@ app.use("/api/v1", menuReviewRouter);
 app.use("/api/v1", menuWishlistRouter);
 app.use("/api/v1", cartRouter);
 app.use("/api/v1", shippingRouter);
+app.use("/api/v1", orderRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
