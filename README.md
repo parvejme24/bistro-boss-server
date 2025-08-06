@@ -1,98 +1,175 @@
-# Bistro Boss Server
+# 🍕 Bistro Boss Server
 
-A comprehensive food delivery API with SSL Commerz payment integration, admin configuration management, and order processing system.
+<div align="center">
 
-## 🚀 Live Demo
+![Bistro Boss Server](https://img.shields.io/badge/Bistro%20Boss-Server%20API-blue?style=for-the-badge&logo=node.js)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?style=for-the-badge&logo=node.js)
+![Express.js](https://img.shields.io/badge/Express.js-4.21+-black?style=for-the-badge&logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-blue?style=for-the-badge&logo=mongodb)
+![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)
+![SSL Commerz](https://img.shields.io/badge/Payment-SSL%20Commerz-orange?style=for-the-badge)
 
-**API Base URL:** [https://bistro-boss-server-tau-three.vercel.app](https://bistro-boss-server-tau-three.vercel.app)
+**A comprehensive, production-ready food delivery API with advanced payment integration, real-time order management, and scalable architecture.**
 
-## 📋 Features
+[🚀 Live Demo](https://bistro-boss-server-tau-three.vercel.app) • [📚 API Docs](#-api-documentation) • [🛠️ Tech Stack](#-tech-stack) • [📦 Installation](#-installation)
 
-- 🔐 **User Authentication & Authorization**
-- 🍽️ **Menu Management System**
-- 📝 **Blog & Review System**
-- 🛒 **Shopping Cart & Wishlist**
-- 💳 **SSL Commerz Payment Integration**
-- 📦 **Order Management**
-- ⚙️ **Admin Configuration Dashboard**
-- 🚚 **Shipping & Delivery Management**
-- 🔧 **Maintenance Mode**
+</div>
 
-## 🛠️ Tech Stack
+---
 
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB with Mongoose
-- **Authentication:** JWT
-- **Payment:** SSL Commerz
-- **Deployment:** Vercel
-- **Security:** Helmet, CORS, Rate Limiting
+## 🌟 **Project Highlights**
 
-## 📦 Installation
+| Feature | Description | Status |
+|---------|-------------|--------|
+| 🔐 **Authentication** | JWT-based auth with role-based access control | ✅ Complete |
+| 💳 **Payment Gateway** | SSL Commerz integration with webhook handling | ✅ Complete |
+| 📦 **Order Management** | Real-time order tracking & status updates | ✅ Complete |
+| 🛒 **Shopping Cart** | Persistent cart with item management | ✅ Complete |
+| 📊 **Admin Dashboard** | Dynamic configuration & analytics | ✅ Complete |
+| 🚚 **Shipping System** | Multi-zone shipping with cost calculation | ✅ Complete |
+| 🔧 **Maintenance Mode** | Zero-downtime maintenance capability | ✅ Complete |
+| 📱 **RESTful API** | 20+ endpoints with comprehensive CRUD | ✅ Complete |
+
+---
+
+## 🚀 **Live Demo & Quick Start**
+
+<div align="center">
+
+### **🌐 Production API**
+**Base URL:** `https://bistro-boss-server-tau-three.vercel.app`
+
+[![Try it now](https://img.shields.io/badge/Try%20it%20now-Live%20API-brightgreen?style=for-the-badge&logo=vercel)](https://bistro-boss-server-tau-three.vercel.app)
+
+### **📱 Quick API Test**
+```bash
+# Test the live API
+curl https://bistro-boss-server-tau-three.vercel.app/api/v1/menus
+```
+
+</div>
+
+---
+
+## 🛠️ **Tech Stack & Architecture**
+
+<div align="center">
+
+### **Backend Technologies**
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-4.21+-000000?style=flat-square&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-8.0+-880000?style=flat-square&logo=mongoose&logoColor=white)
+
+### **Security & Performance**
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=json-web-tokens&logoColor=white)
+![Helmet](https://img.shields.io/badge/Helmet-Security-000000?style=flat-square&logo=helmet&logoColor=white)
+![Rate Limiting](https://img.shields.io/badge/Rate%20Limiting-Enabled-red?style=flat-square)
+![CORS](https://img.shields.io/badge/CORS-Enabled-blue?style=flat-square)
+
+### **Payment & Deployment**
+![SSL Commerz](https://img.shields.io/badge/SSL%20Commerz-Payment%20Gateway-orange?style=flat-square)
+![Vercel](https://img.shields.io/badge/Vercel-Serverless-black?style=flat-square&logo=vercel&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-HTTP%20Client-5A29E4?style=flat-square&logo=axios&logoColor=white)
+
+</div>
+
+---
+
+## 📊 **System Architecture**
+
+```mermaid
+graph TB
+    A[Client App] --> B[Load Balancer]
+    B --> C[API Gateway]
+    C --> D[Authentication]
+    C --> E[Menu Service]
+    C --> F[Order Service]
+    C --> G[Payment Service]
+    C --> H[Admin Service]
+    
+    D --> I[(MongoDB)]
+    E --> I
+    F --> I
+    G --> J[SSL Commerz]
+    H --> I
+    
+    style A fill:#e1f5fe
+    style I fill:#f3e5f5
+    style J fill:#fff3e0
+```
+
+---
+
+## 🚀 **Features Overview**
+
+### **🔐 Authentication & Authorization**
+- **JWT-based authentication** with refresh tokens
+- **Role-based access control** (User, Chef, Admin)
+- **Secure password hashing** with bcrypt
+- **Token validation middleware**
+
+### **🍽️ Menu Management System**
+- **CRUD operations** for menu items
+- **Category management** with nested structures
+- **Image handling** with cloud storage
+- **Search and filtering** capabilities
+- **Chef-specific menu management**
+
+### **💳 Payment Integration**
+- **SSL Commerz payment gateway** integration
+- **Secure payment processing** with webhooks
+- **Transaction verification** and validation
+- **Refund processing** capabilities
+- **Payment status tracking**
+
+### **📦 Order Management**
+- **Real-time order tracking** with status updates
+- **Order history** and analytics
+- **Email notifications** for order updates
+- **Order cancellation** with refund processing
+- **Delivery time estimation**
+
+### **🛒 Shopping Cart System**
+- **Persistent cart** across sessions
+- **Item quantity management**
+- **Price calculation** with discounts
+- **Cart synchronization** across devices
+
+### **⚙️ Admin Configuration**
+- **Dynamic SSL Commerz settings** management
+- **Payment collection** phone number updates
+- **Site configuration** from dashboard
+- **Maintenance mode** control
+- **Analytics and reporting**
+
+---
+
+## 📦 **Installation & Setup**
+
+### **Prerequisites**
+- Node.js 18+ 
+- MongoDB Atlas account
+- SSL Commerz merchant account
+
+### **Quick Installation**
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/parvejme24/bistro-boss-server.git
 cd bistro-boss-server
 
 # Install dependencies
 npm install
 
-# Create environment file
+# Set up environment variables
 cp env.example .env
 
 # Start development server
 npm run dev
 ```
 
-## 🚀 Quick Start
-
-### **Local Development:**
-```bash
-# Start the server locally
-npm run dev
-
-# Test the server
-npm test
-
-# Deploy to Vercel
-npm run deploy
-```
-
-### **What you'll see when running locally:**
-```
-╔══════════════════════════════════════════════════════════════╗
-║                    🍕 BISTRO BOSS SERVER 🍕                    ║
-╠══════════════════════════════════════════════════════════════╣
-║                                                              ║
-║  🚀 Server Status: RUNNING                                   ║
-║  📍 Local URL: http://localhost:5000                        ║
-║  🌐 Live URL: https://bistro-boss-server-tau-three.vercel.app ║
-║  📚 API Base: http://localhost:5000/api/v1                  ║
-║  🔧 Environment: development                                 ║
-║  🗄️  Database: MongoDB                                      ║
-║  💳 Payment: SSL Commerz                                    ║
-║                                                              ║
-║  📋 Available Endpoints:                                    ║
-║  • GET / - Welcome message                                  ║
-║  • GET /api/v1/config - Public configuration                ║
-║  • GET /api/v1/menus - Get all menus                        ║
-║  • POST /api/v1/auth/login - User login                     ║
-║  • POST /api/v1/orders - Create order                       ║
-║                                                              ║
-║  🔐 Admin Endpoints:                                         ║
-║  • GET /api/v1/admin/config - Admin config                  ║
-║  • GET /api/v1/admin/orders - All orders                    ║
-║                                                              ║
-║  🛠️  Development Commands:                                    ║
-║  • npm run dev - Start with nodemon                         ║
-║  • npm run deploy - Deploy to Vercel                        ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-```
-
-## ⚙️ Environment Variables
-
-Create a `.env` file with the following variables:
+### **Environment Configuration**
 
 ```env
 # Database Configuration
@@ -118,9 +195,11 @@ FRONTEND_URL=http://localhost:3000
 BACKEND_URL=http://localhost:5000
 ```
 
-## 🚀 Vercel Deployment
+---
 
-### 1. **Deploy to Vercel**
+## 🚀 **Deployment**
+
+### **Vercel Deployment (Recommended)**
 
 ```bash
 # Install Vercel CLI
@@ -129,154 +208,226 @@ npm install -g vercel
 # Login to Vercel
 vercel login
 
-# Deploy
-vercel
+# Deploy to production
+vercel --prod
 ```
 
-### 2. **Set Environment Variables in Vercel Dashboard**
+### **Environment Variables in Vercel**
 
-Go to your Vercel project settings and add these environment variables:
+Set these environment variables in your Vercel dashboard:
 
 ```env
-# Database (Use MongoDB Atlas for production)
 DB_USER=your_mongodb_username
 DB_PASS=your_mongodb_password
 DB_NAME=bistro_boss
-
-# JWT
-JWT_SECRET=your-super-secret-jwt-key-here-make-it-long-and-random
+JWT_SECRET=your-super-secret-jwt-key
 JWT_REFRESH_SECRET=your-refresh-secret-key
-
-# SSL Commerz
 SSL_COMMERZ_STORE_ID=testbox
 SSL_COMMERZ_STORE_PASSWORD=qwerty
 SSL_COMMERZ_IS_LIVE=false
-
-# URLs (Update with your Vercel domains)
-FRONTEND_URL=https://your-frontend-domain.vercel.app
-BACKEND_URL=https://your-backend-domain.vercel.app
 ```
 
-## 📚 API Documentation
+---
+
+## 📚 **API Documentation**
 
 ### **Base URL:** `https://bistro-boss-server-tau-three.vercel.app/api/v1`
 
-### **Authentication Endpoints**
-- `POST /auth/register` - User registration
-- `POST /auth/login` - User login
-- `POST /auth/refresh-token` - Refresh JWT token
+### **🔐 Authentication Endpoints**
 
-### **Menu Endpoints**
-- `GET /menus` - Get all menus
-- `GET /menus/:id` - Get menu by ID
-- `POST /admin/menus` - Create menu (Admin)
-- `PUT /admin/menus/:id` - Update menu (Admin)
-- `DELETE /admin/menus/:id` - Delete menu (Admin)
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `POST` | `/auth/register` | User registration | ❌ |
+| `POST` | `/auth/login` | User login | ❌ |
+| `POST` | `/auth/refresh-token` | Refresh JWT token | ✅ |
 
-### **Order Endpoints**
-- `POST /orders` - Create order
-- `GET /orders` - Get user orders
-- `GET /orders/:id` - Get order by ID
-- `PUT /orders/:id/cancel` - Cancel order
-- `GET /admin/orders` - Get all orders (Admin)
-- `PUT /admin/orders/:id/status` - Update order status (Admin)
+### **🍽️ Menu Endpoints**
 
-### **Admin Configuration**
-- `GET /admin/config` - Get admin configuration
-- `PUT /admin/config/ssl-commerz` - Update SSL Commerz settings
-- `PUT /admin/config/payment-collection` - Update payment collection
-- `POST /admin/config/test-ssl-commerz` - Test SSL Commerz connection
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `GET` | `/menus` | Get all menus | ❌ |
+| `GET` | `/menus/:id` | Get menu by ID | ❌ |
+| `POST` | `/admin/menus` | Create menu (Admin) | ✅ |
+| `PUT` | `/admin/menus/:id` | Update menu (Admin) | ✅ |
+| `DELETE` | `/admin/menus/:id` | Delete menu (Admin) | ✅ |
 
-### **Public Endpoints**
-- `GET /config` - Get public configuration
-- `GET /menus/chef/:chefId` - Get menus by chef
+### **📦 Order Endpoints**
 
-## 🔐 SSL Commerz Integration
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `POST` | `/orders` | Create order | ✅ |
+| `GET` | `/orders` | Get user orders | ✅ |
+| `GET` | `/orders/:id` | Get order by ID | ✅ |
+| `PUT` | `/orders/:id/cancel` | Cancel order | ✅ |
+| `GET` | `/admin/orders` | Get all orders (Admin) | ✅ |
+| `PUT` | `/admin/orders/:id/status` | Update order status (Admin) | ✅ |
 
-### **Payment Flow:**
-1. User creates order with SSL Commerz payment
-2. System creates payment session
-3. User redirected to SSL Commerz gateway
-4. Payment processed and callback received
-5. Order status updated based on payment result
+### **⚙️ Admin Configuration**
 
-### **Callback URLs (Update in SSL Commerz Dashboard):**
-- Success: `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/success`
-- Fail: `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/fail`
-- Cancel: `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/cancel`
-- IPN: `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/ipn`
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `GET` | `/admin/config` | Get admin configuration | ✅ |
+| `PUT` | `/admin/config/ssl-commerz` | Update SSL Commerz settings | ✅ |
+| `PUT` | `/admin/config/payment-collection` | Update payment collection | ✅ |
+| `POST` | `/admin/config/test-ssl-commerz` | Test SSL Commerz connection | ✅ |
 
-## 🧪 Testing
+---
 
-### **Test the API:**
+## 🔐 **SSL Commerz Integration**
+
+### **Payment Flow Architecture**
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as API
+    participant S as SSL Commerz
+    participant D as Database
+    
+    U->>A: Create Order
+    A->>D: Save Order
+    A->>S: Create Payment Session
+    S->>U: Redirect to Payment Gateway
+    U->>S: Complete Payment
+    S->>A: Payment Callback
+    A->>D: Update Order Status
+    A->>U: Payment Confirmation
+```
+
+### **Callback URLs Configuration**
+
+Configure these URLs in your SSL Commerz dashboard:
+
+- **Success:** `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/success`
+- **Fail:** `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/fail`
+- **Cancel:** `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/cancel`
+- **IPN:** `https://bistro-boss-server-tau-three.vercel.app/api/v1/orders/payment/ipn`
+
+---
+
+## 🧪 **Testing**
+
+### **API Testing**
+
 ```bash
 # Test basic connectivity
 curl https://bistro-boss-server-tau-three.vercel.app/
 
-# Test public config
-curl https://bistro-boss-server-tau-three.vercel.app/api/v1/config
-
 # Test menu endpoints
 curl https://bistro-boss-server-tau-three.vercel.app/api/v1/menus
+
+# Test with authentication
+curl -H "Authorization: Bearer YOUR_TOKEN" \
+     https://bistro-boss-server-tau-three.vercel.app/api/v1/orders
 ```
 
-## 📱 Frontend Integration
+### **Local Testing**
 
-### **Example API Call:**
-```javascript
-const response = await fetch('https://bistro-boss-server-tau-three.vercel.app/api/v1/menus', {
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
-  }
-});
-const menus = await response.json();
+```bash
+# Start the server
+npm run dev
+
+# Run tests
+npm test
+
+# Test specific endpoints
+curl http://localhost:5000/api/v1/menus
 ```
-
-## 🔧 Admin Dashboard Features
-
-- **SSL Commerz Settings Management**
-- **Payment Collection Phone Number Management**
-- **General Site Settings**
-- **Notification Preferences**
-- **Maintenance Mode Control**
-- **Order Statistics & Analytics**
-
-## 🛡️ Security Features
-
-- JWT Authentication
-- Role-based Authorization
-- Rate Limiting
-- CORS Protection
-- XSS Protection
-- MongoDB Injection Protection
-- Helmet Security Headers
-
-## 📊 Database Schema
-
-- **Users** - User accounts and authentication
-- **Menus** - Food items and categories
-- **Orders** - Order management and payment
-- **Carts** - Shopping cart functionality
-- **Reviews** - User reviews and ratings
-- **AdminConfig** - Admin configuration settings
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the ISC License.
-
-## 🆘 Support
-
-For support, email: support@bistroboss.com
 
 ---
 
-**Bistro Boss Server** - Delicious food delivery API with secure payment processing! 🍕🍔🍜 
+## 📊 **Database Schema**
+
+### **Core Collections**
+
+| Collection | Purpose | Key Features |
+|------------|---------|--------------|
+| **Users** | User accounts & authentication | JWT tokens, role-based access |
+| **Menus** | Food items & categories | Image handling, pricing, categories |
+| **Orders** | Order management & payment | Status tracking, payment integration |
+| **Carts** | Shopping cart functionality | Persistent storage, item management |
+| **Reviews** | User reviews & ratings | Rating system, moderation |
+| **AdminConfig** | Admin configuration settings | Dynamic settings management |
+
+---
+
+## 🛡️ **Security Features**
+
+<div align="center">
+
+![Security](https://img.shields.io/badge/Security-Hardened-red?style=for-the-badge&logo=shield)
+
+</div>
+
+- **🔐 JWT Authentication** with secure token management
+- **🛡️ Helmet Security Headers** for protection against common vulnerabilities
+- **🔄 Rate Limiting** to prevent abuse and DDoS attacks
+- **🌐 CORS Protection** for cross-origin request security
+- **🧹 XSS Protection** with input sanitization
+- **💉 MongoDB Injection Protection** with parameterized queries
+- **🔒 Role-based Authorization** with granular permissions
+- **🛡️ Input Validation** with comprehensive sanitization
+
+---
+
+## 📈 **Performance & Scalability**
+
+- **⚡ Serverless Architecture** for automatic scaling
+- **🗄️ MongoDB Atlas** for cloud database management
+- **🔄 Connection Pooling** for optimal database performance
+- **📦 Efficient Data Models** with proper indexing
+- **🚀 CDN Integration** for static asset delivery
+- **📊 Monitoring & Logging** for performance tracking
+
+---
+
+## 🤝 **Contributing**
+
+We welcome contributions! Please follow these steps:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. **Open** a Pull Request
+
+### **Development Guidelines**
+
+- Follow **ESLint** configuration
+- Write **comprehensive tests**
+- Update **documentation** for new features
+- Follow **conventional commit messages**
+
+---
+
+## 📄 **License**
+
+This project is licensed under the **ISC License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🆘 **Support & Contact**
+
+<div align="center">
+
+**Need help? Get in touch!**
+
+[![Email](https://img.shields.io/badge/Email-support@bistroboss.com-blue?style=flat-square&logo=gmail)](mailto:support@bistroboss.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Issues-black?style=flat-square&logo=github)](https://github.com/parvejme24/bistro-boss-server/issues)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/parvejme24)
+
+</div>
+
+---
+
+<div align="center">
+
+### **🍕 Bistro Boss Server**
+
+**Delicious food delivery API with enterprise-grade security and payment processing!**
+
+[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)](https://github.com/parvejme24/bistro-boss-server)
+
+**Built with modern technologies for scalable, secure, and maintainable code.**
+
+</div> 
