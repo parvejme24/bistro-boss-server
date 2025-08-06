@@ -37,12 +37,14 @@ const userRouter = require("./src/routers/userRouter");
 const menuCategoryRouter = require("./src/routers/menuCategoryRouter");
 const menuRouter = require("./src/routers/menuRouter");
 const blogCategoryRouter = require("./src/routers/blogCategoryRouter");
+const blogRouter = require("./src/routers/blogRouter");
 
 // Routes
 app.use("/api/v1", userRouter);
 app.use("/api/v1", menuCategoryRouter);
 app.use("/api/v1", menuRouter);
 app.use("/api/v1", blogCategoryRouter);
+app.use("/api/v1", blogRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
