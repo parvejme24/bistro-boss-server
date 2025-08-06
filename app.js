@@ -35,10 +35,12 @@ app.use(limiter);
 // Import routes
 const userRouter = require("./src/routers/userRouter");
 const menuCategoryRouter = require("./src/routers/menuCategoryRouter");
+const menuRouter = require("./src/routers/menuRouter");
 
 // Routes
 app.use("/api/v1", userRouter);
 app.use("/api/v1", menuCategoryRouter);
+app.use("/api/v1", menuRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
