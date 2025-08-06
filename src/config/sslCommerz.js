@@ -3,13 +3,34 @@ const crypto = require('crypto');
 
 class SSLCommerz {
   constructor() {
-    this.storeId = process.env.SSL_COMMERZ_STORE_ID;
-    this.storePassword = process.env.SSL_COMMERZ_STORE_PASSWORD;
+    // Initialize with environment variables as fallback
+    this.storeId = process.env.SSL_COMMERZ_STORE_ID || 'testbox';
+    this.storePassword = process.env.SSL_COMMERZ_STORE_PASSWORD || 'qwerty';
     this.isLive = process.env.SSL_COMMERZ_IS_LIVE === 'true';
     
     this.baseURL = this.isLive 
       ? 'https://securepay.sslcommerz.com'
       : 'https://sandbox.sslcommerz.com';
+  }
+
+  // Update configuration from admin settings
+  async updateConfig() {
+    try {
+      const AdminConfig = require('../models/AdminConfigModel');
+      const config = await AdminConfig.getConfig();
+      
+      if (config.sslCommerz.isActive) {
+        this.storeId = config.sslCommerz.storeId;
+        this.storePassword = config.sslCommerz.storePassword;
+        this.isLive = config.sslCommerz.isLive;
+        
+        this.baseURL = this.isLive 
+          ? 'https://securepay.sslcommerz.com'
+          : 'https://sandbox.sslcommerz.com';
+      }
+    } catch (error) {
+      console.error('Failed to update SSL Commerz config:', error);
+    }
   }
 
   // Generate transaction ID
@@ -20,6 +41,8 @@ class SSLCommerz {
   // Create payment session
   async createSession(orderData) {
     try {
+      // Update config before creating session
+      await this.updateConfig();
       const {
         orderNumber,
         amount,
@@ -98,6 +121,8 @@ class SSLCommerz {
   // Validate payment
   async validatePayment(transactionId, amount, currency = 'BDT') {
     try {
+      // Update config before validation
+      await this.updateConfig();
       const postData = {
         store_id: this.storeId,
         store_passwd: this.storePassword,
@@ -133,6 +158,8 @@ class SSLCommerz {
   // Verify transaction
   async verifyTransaction(transactionId) {
     try {
+      // Update config before verification
+      await this.updateConfig();
       const postData = {
         store_id: this.storeId,
         store_passwd: this.storePassword,
@@ -166,6 +193,8 @@ class SSLCommerz {
   // Refund transaction
   async refundTransaction(transactionId, amount, refundRemark = '') {
     try {
+      // Update config before refund
+      await this.updateConfig();
       const postData = {
         store_id: this.storeId,
         store_passwd: this.storePassword,

@@ -9,6 +9,7 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
 const dotenv = require("dotenv");
+const { checkMaintenance } = require("./src/middleware/maintenance");
 
 dotenv.config();
 
@@ -21,6 +22,9 @@ app.use(helmet());
 app.use(xssClean());
 app.use(hpp());
 app.use(mongoSanitize());
+
+// Maintenance mode check
+app.use(checkMaintenance);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -44,6 +48,7 @@ const menuWishlistRouter = require("./src/routers/menuWishlistRouter");
 const cartRouter = require("./src/routers/cartRouter");
 const shippingRouter = require("./src/routers/shippingRouter");
 const orderRouter = require("./src/routers/orderRouter");
+const adminConfigRouter = require("./src/routers/adminConfigRouter");
 
 // Routes
 app.use("/api/v1", userRouter);
@@ -57,6 +62,7 @@ app.use("/api/v1", menuWishlistRouter);
 app.use("/api/v1", cartRouter);
 app.use("/api/v1", shippingRouter);
 app.use("/api/v1", orderRouter);
+app.use("/api/v1", adminConfigRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
