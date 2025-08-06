@@ -36,11 +36,13 @@ app.use(limiter);
 const userRouter = require("./src/routers/userRouter");
 const menuCategoryRouter = require("./src/routers/menuCategoryRouter");
 const menuRouter = require("./src/routers/menuRouter");
+const blogCategoryRouter = require("./src/routers/blogCategoryRouter");
 
 // Routes
 app.use("/api/v1", userRouter);
 app.use("/api/v1", menuCategoryRouter);
 app.use("/api/v1", menuRouter);
+app.use("/api/v1", blogCategoryRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
